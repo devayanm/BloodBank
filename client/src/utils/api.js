@@ -71,3 +71,67 @@ export async function changePassword(data, token) {
     throw new Error((await res.json()).message || "Failed to change password");
   return res.json();
 }
+
+export async function registerDonor(data) {
+  const token = localStorage.getItem("token");
+  const response = await fetch(`${API_BASE_URL}/donors`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+    credentials: "include",
+  });
+
+  const result = await response.json();
+  if (!response.ok) {
+    throw new Error(result.message || "Could not register as donor");
+  }
+  return result;
+}
+
+export async function getNearbyDonors({ lat, lng }) {
+  const params = new URLSearchParams({
+    lat,
+    lng,
+  });
+  const response = await fetch(
+    `${API_BASE_URL}/donors/nearby?${params.toString()}`
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch donors");
+  }
+  return response.json();
+}
+
+export async function registerOrganDonor(data) {
+  const token = localStorage.getItem("token");
+  const response = await fetch(`${API_BASE_URL}/organ-donors`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+  const result = await response.json();
+  if (!response.ok)
+    throw new Error(result.message || "Could not register as organ donor");
+  return result;
+}
+
+export async function getOrganDonors({ lat, lng, organ } = {}) {
+  const params = new URLSearchParams();
+  if (lat && lng) {
+    params.append("lat", lat);
+    params.append("lng", lng);
+  }
+  if (organ) params.append("organ", organ);
+
+  const response = await fetch(
+    `${API_BASE_URL}/organ-donors/nearby?${params.toString()}`
+  );
+  if (!response.ok) throw new Error("Failed to fetch organ donors");
+  return response.json();
+}

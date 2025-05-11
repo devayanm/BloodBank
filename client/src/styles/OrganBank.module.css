@@ -18,6 +18,13 @@
   animation: fadeIn 0.8s ease-in-out;
 }
 
+.searchBarContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
 h1 {
   font-size: 2rem;
   font-weight: 700;

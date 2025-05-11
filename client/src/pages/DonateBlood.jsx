@@ -147,18 +147,18 @@ function DonateBlood() {
                 >
                     🩸 Register as a Donor
                 </motion.button>
-                <motion.button
+                {/* <motion.button
                     className={styles.ctaButton}
                     whileHover={{ scale: 1.05 }}
                 >
                     🏥 Find Blood Banks
-                </motion.button>
-                <motion.button
+                </motion.button> */}
+                {/* <motion.button
                     className={styles.ctaButton}
                     whileHover={{ scale: 1.05 }}
                 >
                     🎪 Find Donation Camps
-                </motion.button>
+                </motion.button> */}
                 <motion.button
                     className={styles.ctaButton}
                     whileHover={{ scale: 1.05 }}

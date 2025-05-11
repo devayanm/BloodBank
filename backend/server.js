@@ -13,6 +13,7 @@ const leaderboardRoutes = require("./routes/leaderboardRoutes");
 const bloodRoutes = require("./routes/bloodRoutes");
 const donationCampRoutes = require("./routes/donationCampRoutes");
 const userRoutes = require("./routes/userRoutes");
+const donorRoutes = require("./routes/donorRoutes");
 const { setupSocket } = require("./socket");
 const errorHandler = require("./middlewares/errorHandler");
 
@@ -69,6 +70,8 @@ app.use("/api/users", userRoutes);
 app.use("/api/leaderboard", leaderboardRoutes);
 app.use("/api/blood", bloodRoutes);
 app.use("/api/camps", donationCampRoutes);
+app.use("/api/donors", donorRoutes);
+app.use("/api/organ-donors", require("./routes/organDonorRoutes"));
 
 // ✅ CSRF Token Route (For Frontend Use)
 app.get("/csrf-token", (req, res) => {

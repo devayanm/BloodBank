@@ -1,68 +1,145 @@
-/* Form Styling */
-.form {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.formContainer {
+    max-width: 370px;
+    margin: 2rem auto;
+    padding: 1.25rem 1.5rem;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.10);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    /* Make the form scrollable if content overflows */
+    max-height: 80vh;
+    overflow-y: auto;
+    /* Hide scroll on desktop, show on mobile */
+    scrollbar-width: thin;
+    scrollbar-color: #1976d2 #f3f7fa;
 }
 
-/* Form Item Styling */
-.form .ant-form-item {
-    margin-bottom: 1.5rem;
+.formContainer::-webkit-scrollbar {
+    width: 6px;
 }
 
-.form .ant-form-item-label {
-    font-size: 1.1rem;
-    color: #d32f2f;
+.formContainer::-webkit-scrollbar-thumb {
+    background: #1976d2;
+    border-radius: 6px;
 }
 
-/* Input Field Styling */
-.form input {
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
+.formContainer::-webkit-scrollbar-track {
+    background: #f3f7fa;
+    border-radius: 6px;
 }
 
-.form input:focus {
-    border-color: #d32f2f;
+.heading {
+    text-align: center;
+    margin-bottom: 1.2rem;
+    color: #1a3c5d;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
-/* Button Styling */
-.form button {
-    padding: 1rem;
-    background-color: #d32f2f;
-    color: #fff;
-    font-size: 1.2rem;
+.label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-weight: 500;
+    color: #2a2a2a;
+    font-size: 0.97rem;
+}
+
+.input {
+    width: 100%;
+    padding: 0.45rem 0.7rem;
+    margin-bottom: 1rem;
+    border: 1.2px solid #cfd8dc;
+    border-radius: 6px;
+    background: #f7fafc;
+    font-size: 0.97rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus {
+    border-color: #1976d2;
+    box-shadow: 0 0 0 2px #1976d220;
+    outline: none;
+    background: #eef6fc;
+}
+
+.checkbox {
+    margin-right: 0.5rem;
+    accent-color: #1976d2;
+    transform: scale(1.15);
+}
+
+.fieldset {
+    border: 1px solid #cfd8dc;
+    border-radius: 7px;
+    padding: 1rem 0.7rem 0.7rem 0.7rem;
+    margin-bottom: 1rem;
+    background: #f3f7fa;
+}
+
+.legend {
+    font-size: 1.02rem;
     font-weight: bold;
+    color: #1976d2;
+    margin-bottom: 0.5rem;
+}
+
+.submitButton {
+    width: 100%;
+    padding: 0.65rem 0;
+    background: linear-gradient(90deg, #1976d2 80%, #2196f3 100%);
+    color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
+    font-size: 1.08rem;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background 0.2s, box-shadow 0.2s;
+    margin-top: 0.3rem;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
 }
 
-.form button:hover {
-    background-color: #b71c1c;
-    transform: translateY(-3px);
+.submitButton:hover,
+.submitButton:focus {
+    background: linear-gradient(90deg, #125ea9 80%, #1976d2 100%);
+    box-shadow: 0 4px 16px rgba(25, 118, 210, 0.13);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .form {
-        padding: 1.5rem;
+.message {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #388e3c;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.locationButton {
+    background: #e3f2fd;
+    color: #1976d2;
+    border: 1px solid #90caf9;
+    border-radius: 6px;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.locationButton:hover,
+.locationButton:focus {
+    background: #1976d2;
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .formContainer {
+        max-width: 98vw;
+        padding: 0.7rem 0.5rem;
+        max-height: 95vh;
     }
-}
 
-@media (max-width: 480px) {
-    .form {
-        padding: 1rem;
-    }
-
-    .form button {
-        font-size: 1rem;
-        padding: 0.8rem;
+    .heading {
+        font-size: 1.05rem;
     }
 }
