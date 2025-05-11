@@ -1,0 +1,270 @@
+/* ====== Container ====== */
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ====== Header ====== */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ff4d4f;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ====== Floating Search Bar ====== */
+.floatingSearchBar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* ====== Filters ====== */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.dropdown {
+    padding: 10px 14px;
+    font-size: 1rem;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dropdown:focus {
+    border-color: #ff4d4f;
+    box-shadow: 0 0 10px rgba(255, 77, 79, 0.2);
+}
+
+/* ====== Multi-Select Blood Types ====== */
+.multiSelect {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.bloodType {
+    padding: 10px 14px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+    border: 1px solid #ddd;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.bloodType:hover {
+    background-color: #ffe6e6;
+    color: #ff4d4f;
+    border-color: #ff4d4f;
+}
+
+.bloodType.active {
+    background-color: #ff4d4f;
+    color: #fff;
+    border-color: #ff4d4f;
+    box-shadow: 0 4px 12px rgba(255, 77, 79, 0.3);
+}
+
+/* ====== Results ====== */
+.results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+/* ====== Result Card ====== */
+.card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.bestMatch {
+    border: 2px solid #ff4d4f;
+}
+
+/* ====== Card Content ====== */
+.card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.card strong {
+    color: #ff4d4f;
+}
+
+.available {
+    color: #fff;
+    background-color: #52c41a;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.busy {
+    color: #fff;
+    background-color: #ff4d4f;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* ====== Card Actions ====== */
+.actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+.callButton,
+.messageButton {
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: #ff4d4f;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.callButton:hover,
+.messageButton:hover {
+    background-color: #d9363e;
+}
+
+/* ====== Loader ====== */
+.loader {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ff4d4f;
+    padding: 20px;
+}
+
+/* ====== No Results ====== */
+.noResults {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    padding: 20px;
+}
+
+/* ====== Map Container ====== */
+.map {
+    height: 400px;
+    border-radius: 16px;
+    margin-top: 20px;
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+}
+
+/* ====== Popup (Leaflet) ====== */
+.leaflet-popup-content {
+    font-size: 1rem;
+    color: #333;
+}
+
+.leaflet-popup-content strong {
+    color: #ff4d4f;
+}
+
+/* ====== Scrollbar Styling ====== */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ff4d4f;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #d9363e;
+}
+
+/* ====== Responsive Design ====== */
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        padding: 14px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .callButton,
+    .messageButton {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .bloodType {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .card h3 {
+        font-size: 1.3rem;
+    }
+
+    .card p {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,288 @@
+.profileContainer {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f9fafc 60%, #e3f0ff 100%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 0;
+}
+
+.profileCard {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(60, 120, 200, 0.11);
+    padding: 36px 36px 30px 36px;
+    display: flex;
+    gap: 36px;
+    max-width: 700px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.avatarSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 180px;
+    margin-right: 24px;
+}
+
+.avatarWrapper {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 12px;
+}
+
+.avatarImg {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #357abd;
+    background: #f4f6f8;
+}
+
+.avatarInitial {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #357abd 60%, #4a90e2 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.7rem;
+    font-weight: 700;
+    border: 3px solid #357abd;
+    user-select: none;
+}
+
+.avatarBtn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    border: 2px solid #357abd;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.18s, border 0.18s;
+    box-shadow: 0 2px 8px rgba(53, 122, 189, 0.08);
+    z-index: 2;
+}
+
+.avatarBtn:hover,
+.avatarBtn:focus {
+    background: #e3f0ff;
+    border-color: #225a8e;
+    outline: none;
+}
+
+.userName {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 6px;
+    color: #2d3a4b;
+}
+
+.userEmail {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 2px;
+}
+
+.userRole {
+    font-size: 0.98rem;
+    color: #357abd;
+    margin-top: 2px;
+    font-weight: 500;
+}
+
+.infoSection {
+    flex: 1;
+    min-width: 250px;
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.sectionHeader h2 {
+    font-size: 1.18rem;
+    color: #357abd;
+    font-weight: 700;
+    margin: 0;
+}
+
+.editBtn {
+    background: #f6faff;
+    color: #357abd;
+    border: none;
+    border-radius: 7px;
+    padding: 6px 18px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+    margin-left: 10px;
+}
+
+.editBtn:hover,
+.editBtn:focus {
+    background: #357abd;
+    color: #fff;
+    outline: none;
+}
+
+.infoList {
+    margin-bottom: 18px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.infoLabel {
+    font-weight: 600;
+    color: #357abd;
+    margin-right: 8px;
+}
+
+.editForm {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.formGroup label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2d3a4b;
+}
+
+.formGroup input,
+.formGroup select {
+    padding: 9px 12px;
+    border: 1.5px solid #e3eaf2;
+    border-radius: 7px;
+    font-size: 1rem;
+    background: #f6faff;
+    transition: border 0.18s;
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+    border: 1.5px solid #357abd;
+    outline: none;
+}
+
+.formActions {
+    display: flex;
+    gap: 14px;
+    justify-content: flex-end;
+    margin-top: 2px;
+}
+
+.cancelBtn {
+    background: #fff0f0;
+    color: #ff3b30;
+    border: none;
+    border-radius: 7px;
+    padding: 7px 18px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+}
+
+.cancelBtn:hover,
+.cancelBtn:focus {
+    background: #ff3b30;
+    color: #fff;
+    outline: none;
+}
+
+.saveBtn {
+    background: #357abd;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 7px 18px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+}
+
+.saveBtn:hover,
+.saveBtn:focus {
+    background: #225a8e;
+    color: #fff;
+    outline: none;
+}
+
+.success {
+    color: #27ae60;
+    background: #eafaf1;
+    border-radius: 6px;
+    padding: 7px 0 7px 12px;
+    margin-top: 6px;
+    font-size: 0.98rem;
+}
+
+.error {
+    color: #e74c3c;
+    background: #fff4f4;
+    border-radius: 6px;
+    padding: 7px 0 7px 12px;
+    margin-top: 6px;
+    font-size: 0.98rem;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .profileCard {
+        flex-direction: column;
+        align-items: center;
+        padding: 28px 10vw 22px 10vw;
+        gap: 18px;
+    }
+
+    .avatarSection {
+        margin-right: 0;
+        margin-bottom: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .profileContainer {
+        padding: 22px 0;
+    }
+
+    .profileCard {
+        padding: 16px 2vw 12px 2vw;
+        max-width: 98vw;
+    }
+
+    .avatarWrapper,
+    .avatarImg,
+    .avatarInitial {
+        width: 66px;
+        height: 66px;
+        font-size: 1.6rem;
+    }
+}

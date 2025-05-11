@@ -1,0 +1,68 @@
+/* Form Styling */
+.form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Item Styling */
+.form .ant-form-item {
+    margin-bottom: 1.5rem;
+}
+
+.form .ant-form-item-label {
+    font-size: 1.1rem;
+    color: #d32f2f;
+}
+
+/* Input Field Styling */
+.form input {
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form input:focus {
+    border-color: #d32f2f;
+}
+
+/* Button Styling */
+.form button {
+    padding: 1rem;
+    background-color: #d32f2f;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.form button:hover {
+    background-color: #b71c1c;
+    transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .form {
+        padding: 1rem;
+    }
+
+    .form button {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+}

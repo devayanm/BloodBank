@@ -1,0 +1,40 @@
+.inputWrapper {
+    margin-bottom: 1.25rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #2d3748;
+    font-size: 0.95rem;
+}
+
+.input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    padding-right: 2.5rem;
+    font-size: 1rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: border-color 0.2s ease;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #3182ce;
+    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.3);
+}
+
+.error {
+    border-color: #e53e3e;
+}
+
+.errorMessage {
+    color: #e53e3e;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
