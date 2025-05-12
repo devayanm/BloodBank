@@ -14,6 +14,7 @@ const bloodRoutes = require("./routes/bloodRoutes");
 const donationCampRoutes = require("./routes/donationCampRoutes");
 const userRoutes = require("./routes/userRoutes");
 const donorRoutes = require("./routes/donorRoutes");
+const adminRoutes = require("./routes/admin");
 const { setupSocket } = require("./socket");
 const errorHandler = require("./middlewares/errorHandler");
 
@@ -26,14 +27,27 @@ const app = express();
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true }));
 
-// ✅ CORS Setup (Restrict to specific origins)
-const allowedOrigins = [process.env.CLIENT_URL];
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:5173",
+  // add more as needed
+];
+
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: function (origin, callback) {
+      // allow requests with no origin (like mobile apps, curl, etc.)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) !== -1) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"), false);
+      }
+    },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "Range"],
+    exposedHeaders: ["Content-Range"],
   })
 );
 
@@ -72,6 +86,7 @@ app.use("/api/blood", bloodRoutes);
 app.use("/api/camps", donationCampRoutes);
 app.use("/api/donors", donorRoutes);
 app.use("/api/organ-donors", require("./routes/organDonorRoutes"));
+app.use("/api/admin", adminRoutes);
 
 // ✅ CSRF Token Route (For Frontend Use)
 app.get("/csrf-token", (req, res) => {
