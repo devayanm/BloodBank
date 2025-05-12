@@ -13,6 +13,7 @@ const donorSchema = new Schema(
       type: String,
       required: [true, "Address is required"],
     },
+    contact: { type: String },
     location: {
       type: {
         type: String,

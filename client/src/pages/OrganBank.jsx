@@ -6,35 +6,27 @@ import OrganDonorForm from '../components/OrganDonorForm';
 import { getOrganDonors } from '../utils/api';
 
 function OrganBank() {
-    // Dummy data
-    const dummyDonors = [
-        { id: 1, name: 'John Doe', organ: 'Kidney', location: 'New York', urgency: 'High', verified: true, trust: 'Gold' },
-        { id: 2, name: 'Jane Smith', organ: 'Liver', location: 'California', urgency: 'Medium', verified: false, trust: 'Silver' },
-        { id: 3, name: 'Rahul Verma', organ: 'Heart', location: 'Delhi', urgency: 'High', verified: true, trust: 'Platinum' },
-        { id: 4, name: 'Emily Chen', organ: 'Lung', location: 'Seattle', urgency: 'Low', verified: false, trust: 'Bronze' },
-        { id: 5, name: 'Arjun Patel', organ: 'Kidney', location: 'Mumbai', urgency: 'High', verified: true, trust: 'Gold' },
-    ];
-
     const [realDonors, setRealDonors] = useState([]);
     const [query, setQuery] = useState('');
     const [activeFilter, setActiveFilter] = useState('All');
     const [savedDonors, setSavedDonors] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [userLocation, setUserLocation] = useState(null);
 
     // Fetch real donors on mount (optionally use user location)
     useEffect(() => {
         setLoading(true);
         setError('');
-        // Optionally, use geolocation for better results
         navigator.geolocation.getCurrentPosition(
             (position) => {
+                const { latitude, longitude } = position.coords;
+                setUserLocation({ lat: latitude, lng: longitude });
                 getOrganDonors({
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude,
+                    lat: latitude,
+                    lng: longitude,
                 })
                     .then(data => {
-                        // Map real data to match dummy donor shape
                         setRealDonors(
                             data.map((d, idx) => ({
                                 id: `real-${d._id}`,
@@ -44,6 +36,8 @@ function OrganBank() {
                                 urgency: d.urgency,
                                 verified: d.verified,
                                 trust: d.trust,
+                                contact: d.contact || "",
+                                coordinates: d.location?.coordinates || null, // [lng, lat]
                             }))
                         );
                         setLoading(false);
@@ -54,7 +48,6 @@ function OrganBank() {
                     });
             },
             () => {
-                // If geolocation fails, fetch without location
                 getOrganDonors()
                     .then(data => {
                         setRealDonors(
@@ -66,6 +59,8 @@ function OrganBank() {
                                 urgency: d.urgency,
                                 verified: d.verified,
                                 trust: d.trust,
+                                contact: d.contact || "",
+                                coordinates: d.location?.coordinates || null,
                             }))
                         );
                         setLoading(false);
@@ -78,8 +73,7 @@ function OrganBank() {
         );
     }, []);
 
-    // Merge dummy and real donors
-    const donors = [...dummyDonors, ...realDonors];
+    const donors = realDonors;
 
     const organs = ['All', ...new Set(donors.map(d => d.organ))];
 
@@ -104,6 +98,22 @@ function OrganBank() {
         Medium: '#fb8c00',
         Low: '#43a047',
     };
+
+    function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+        function deg2rad(deg) { return deg * (Math.PI / 180); }
+        const R = 6371; // Radius of the earth in km
+        const dLat = deg2rad(lat2 - lat1);
+        const dLon = deg2rad(lon2 - lon1);
+        const a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(deg2rad(lat1)) *
+            Math.cos(deg2rad(lat2)) *
+            Math.sin(dLon / 2) *
+            Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        const d = R * c; // Distance in km
+        return d;
+    }
 
     return (
         <div className={styles.container}>
@@ -155,9 +165,26 @@ function OrganBank() {
                                 <span className={`${styles.trustBadge} ${styles[result.trust?.toLowerCase()]}`}>{result.trust}</span>
                             </p>
                             <p className={styles.location}>📍 {result.location}</p>
+                            {result.coordinates && userLocation && (
+                                <p className={styles.distance}>
+                                    📏 {getDistanceFromLatLonInKm(
+                                        userLocation.lat,
+                                        userLocation.lng,
+                                        result.coordinates[1],
+                                        result.coordinates[0]
+                                    ).toFixed(1)} km away
+                                </p>
+                            )}
                             <p className={styles.urgency} style={{ color: urgencyColors[result.urgency] }}>
                                 Urgency: <strong>{result.urgency}</strong>
                             </p>
+                            {result.contact && (
+                                <div className={styles.contactRow}>
+                                    <span>📞 {result.contact}</span>
+                                    <a href={`tel:${result.contact}`} className={styles.callButton}>Call</a>
+                                    <a href={`sms:${result.contact}`} className={styles.messageButton}>Message</a>
+                                </div>
+                            )}
                             <button className={styles.saveBtn} onClick={() => toggleSave(result.id)}>
                                 {savedDonors.includes(result.id) ? '💖 Saved' : '🤍 Save'}
                             </button>

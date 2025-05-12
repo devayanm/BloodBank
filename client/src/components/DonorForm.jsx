@@ -4,6 +4,7 @@ import styles from '../styles/DonorForm.module.css';
 
 const initialState = {
     address: "",
+    contact: "",
     coordinates: ["", ""], // [lng, lat]
     availabilityStatus: "Available",
     lastDonationDate: "",
@@ -119,6 +120,21 @@ export default function DonorForm({ token }) {
                         required
                         className={styles.input}
                         type="text"
+                    />
+                </label>
+            </div>
+            <div>
+                <label className={styles.label}>
+                    Contact Number:
+                    <input
+                        name="contact"
+                        value={form.contact || ""}
+                        onChange={handleChange}
+                        required
+                        className={styles.input}
+                        type="tel"
+                        pattern="[0-9+\-\s]{8,15}"
+                        placeholder="e.g. +91 9876543210"
                     />
                 </label>
             </div>

@@ -57,6 +57,7 @@ function FindBlood() {
             lng: userLocation.lng,
         })
             .then((data) => {
+                console.log('Fetched donors:', data);
                 // Map backend data to frontend format
                 const userLatLng = L.latLng(userLocation.lat, userLocation.lng);
                 const mappedResults = data.map((donor) => {
@@ -72,7 +73,7 @@ function FindBlood() {
                         location: donor.address,
                         lat: donorLat,
                         lng: donorLng,
-                        phone: donor.user.phone || '',
+                        phone: donor.contact || '',
                         available: donor.availabilityStatus === 'Available' || donor.availabilityStatus === 'Emergency',
                         status: donor.availabilityStatus,
                         distance: distanceInKm,

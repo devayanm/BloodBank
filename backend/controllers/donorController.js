@@ -11,6 +11,7 @@ const registerDonor = asyncHandler(async (req, res) => {
   const donorData = {
     user: user._id,
     address: body.address,
+    contact: body.contact,
     location: {
       type: "Point",
       coordinates: body.coordinates,

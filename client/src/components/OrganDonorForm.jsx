@@ -106,7 +106,7 @@ export default function OrganDonorForm({ token }) {
                 </select>
             </label>
             <label className={styles.label}>
-                Urgency:
+                Avaibility:
                 <select name="urgency" value={form.urgency} onChange={handleChange} className={styles.input}>
                     {urgencies.map((u) => <option key={u} value={u}>{u}</option>)}
                 </select>
@@ -117,9 +117,22 @@ export default function OrganDonorForm({ token }) {
                     {trusts.map((t) => <option key={t} value={t}>{t}</option>)}
                 </select>
             </label>
-            <label className={styles.label}>
+            {/* <label className={styles.label}>
                 Contact (phone/email):
                 <input name="contact" value={form.contact} onChange={handleChange} required className={styles.input} />
+            </label> */}
+            <label className={styles.label}>
+                Contact Number:
+                <input
+                    name="contact"
+                    value={form.contact || ""}
+                    onChange={handleChange}
+                    required
+                    className={styles.input}
+                    type="tel"
+                    pattern="[0-9+\-\s]{8,15}"
+                    placeholder="e.g. +91 9876543210"
+                />
             </label>
             <label className={styles.label}>
                 Address:

@@ -45,6 +45,7 @@ p {
     background-color: #fafafa;
     cursor: pointer;
     transition: all 0.2s ease;
+    max-width: 20%;
 }
 
 .dropdown:focus {

@@ -45,7 +45,7 @@ const organDonorSchema = new Schema(
       enum: ["Bronze", "Silver", "Gold", "Platinum"],
       default: "Bronze",
     },
-    contact: { type: String }, // phone or email
+    contact: { type: String }, // phone 
     address: { type: String },
     notes: { type: String },
   },
