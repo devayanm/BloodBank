@@ -225,12 +225,12 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## 💬 Contact
+<!-- ## 💬 Contact
 
 **Author:** [Your Name]  
 **GitHub:** [github.com/yourusername](https://github.com/yourusername)  
 **Email:** your.email@example.com
 
 ---
-
+-->
 > *Together, we make life-saving donations accessible, transparent, and rewarding for everyone.*
